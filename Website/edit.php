@@ -10,7 +10,7 @@
     <div class="row">
       <div class="col-sm-3">
         <div class="btn-group dropdown" data-toggle="buttons">
-        <button id="tableDropdown" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button id="tableDropdown" type="button" class="btn btn-secondary btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Select Table
         </button>
         <div id="table-select-edit" class="dropdown-menu" data-toggle="buttons" aria-labelledby="tableDropdown">
