@@ -1,0 +1,16 @@
+body {
+  height: 100%;
+  background-image: linear-gradient(to bottom, #FFD073, #A66F00);
+  background-position: center -20%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Rubik", sans-serif;
+}
+
+.btn-dark.focus {
+  box-shadow: none;
+}
+
+.jumbotron-dark {
+  background-color: #343a40;
+}

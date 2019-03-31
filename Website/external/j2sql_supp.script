@@ -1,0 +1,21 @@
+#!/bin/bash
+#
+user="tj_robinson"
+pass="A00399310"
+db="tj_robinson"
+#
+echo
+#
+mongoimport -d "$db" -c parts -u "$user" --password="$pass" --type="json" --file="parts_1000.json" --jsonArray --upsert
+mongoexport -d "$db" -c parts -u "$user" -p "$pass" --type=csv --fields "_id,qty,price,description" | tail -n +2 > parts.csv
+mongoimport -d "$db" -c suppliers -u "$user" --password="$pass" --type="json" --file="suppliers_100.json" --jsonArray --upsert
+echo 'db.suppliers.aggregate([{$unwind: "$tel"}, {$project: {_id: 0, supplierId: "$_id", phoneNumber: "$tel.number"}}, {$out: "phoneNumbers"}]);' | mongo -u "$user" -p "$pass" "$db"
+mongoexport -d "$db" -c suppliers -u "$user" -p "$pass" --type=csv --fields "_id,name,email" | tail -n +2 > suppliers.csv
+mongoexport -d "$db" -c phoneNumbers -u "$user" -p "$pass" --type=csv --fields "supplierId,phoneNumber" | tail -n +2 > phoneNumbers.csv
+#
+echo "source make_tables.sql;" | mysql -u "$user" --password="$pass" "$db"
+mysqlimport --fields-terminated-by=, --user="$user" --password="$pass" --local "$db" parts.csv
+mysqlimport --fields-terminated-by=, --user="$user" --password="$pass" --local "$db" suppliers.csv
+mysqlimport --fields-terminated-by=, --user="$user" --password="$pass" --local "$db" phoneNumbers.csv
+echo "done"
+

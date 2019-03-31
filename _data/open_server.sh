@@ -1,0 +1,1 @@
+zsh -c "sftp tj_robinson@csci3461.cs.smu.ca" && exit
