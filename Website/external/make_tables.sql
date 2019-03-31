@@ -12,6 +12,7 @@ drop table if exists tj_robinson.customer;
 drop table if exists tj_robinson.transaction;
 drop table if exists tj_robinson.forSale;
 drop table if exists tj_robinson.suppliers;
+drop table if exists tj_robinson.licenses;
 drop table if exists tj_robinson.phoneNumbers;
 drop table if exists tj_robinson.monthlyExpenses;
 drop table if exists tj_robinson.orders;
@@ -20,7 +21,6 @@ drop table if exists tj_robinson.parts;
 drop table if exists tj_robinson.repairs;
 drop table if exists tj_robinson.cars;
 SET FOREIGN_KEY_CHECKS = 1;
-
 
 create table if not exists parts
 (
@@ -50,14 +50,20 @@ create table if not exists repairs
 create table if not exists cars
 (
   carId int not null auto_increment,
-  plateNum varchar(10),
-  province varchar(2),
   color varchar(50),
   make varchar(20),
   model varchar(20),
   year year,
   type varchar(20),
   primary key (carId)
+) engine = innodb;
+
+create table if not exists licenses
+(
+  plateNum varchar(10) not null,
+  province varchar(2) not null,
+  carId int not null references tj_robinson.cars(carId) on update cascade on delete cascade,
+  primary key (plateNum, province)
 ) engine = innodb;
 
 create table if not exists phoneNumbers
@@ -105,9 +111,10 @@ create table if not exists transaction
   dateCompleted date,
   custId int not null,
   charged double(10,2),
-  carId int not null,
+  plateNum varchar(10) not null,
+  province varchar(2) not null,
   foreign key(custId) references tj_robinson.customer(customerNum) on update cascade on delete cascade,
-  foreign key(carId) references tj_robinson.cars(carId) on update cascade on delete cascade,
+  foreign key(plateNum, province) references tj_robinson.licenses(plateNum, province) on update cascade on delete cascade,
   primary key(transactionNumber)
 ) engine = innodb;
 

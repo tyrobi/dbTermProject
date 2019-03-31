@@ -1,0 +1,4 @@
+_data/*
+external/make_tables.sql
+common/header.html
+*.script
