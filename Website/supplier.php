@@ -6,6 +6,7 @@
 <body>
 
 <?php include("common/nav.html") ?>
+  <script src="scripts/addSupplier.js"></script>
   <div class="container" style="margin-top:30px">
     <button class="btn btn-dark btn-lg" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       Add Supplier
@@ -23,10 +24,10 @@
           <input id="supplierID" type="text" placeholder="ID value" disabled="">
           <br>
           <label for="supplierName">Name of Supplier</label>
-          <input id="supplierName" type="text" placeholder="Name">
+          <input id="supplierName" type="text" placeholder="Name" required>
           <br>
           <label for="supplierEmail">Email address</label>
-          <input id="supplierEmail" type="text" placeholder="Email Address">
+          <input id="supplierEmail" type="text" placeholder="Email Address" required>
           <br>
         </div>
       </fieldset>
@@ -34,7 +35,7 @@
         <legend>Supplier Phone Contacts</legend>
         <div id="phoneNumberEntry" class="form-group">
         </div>
-        <input type="buttn" id="newNumber" class="btn btn-dark" value="+">
+        <input type="button" id="newNumber" class="btn btn-dark" value="+" onclick="addPhoneNumber()">
       </fieldset>
         <div class="form-group">
           <input type="submit" class="btn btn-success" value="Submit Changes">
