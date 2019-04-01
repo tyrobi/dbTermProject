@@ -76,7 +76,7 @@ create table if not exists phoneNumbers
 
 create table if not exists orders
 (
-  orderId int not null,
+  orderId int not null auto_increment,
   supplierId int not null,
   dateFiled date,
   foreign key(supplierId) references tj_robinson.suppliers(supplierId) on update cascade on delete cascade,
@@ -86,7 +86,6 @@ create table if not exists orders
 create table if not exists boughtPart
 (
   partPurchaseId int not null auto_increment,
-  dateFiled date,
   orderId int not null,
   partId int not null,
   foreign key(orderId) references tj_robinson.orders(orderId) on update cascade on delete cascade,

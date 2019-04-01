@@ -35,6 +35,7 @@ function onSubmit() {
             });
         } else {
             $("#supplierAddForm")[0].reset();
+            $("#phoneNumberEntry").empty();
         }
     });
 }
@@ -54,6 +55,7 @@ function submitPhoneNumbers(id) {
         }
         numberPhoneInputs = 0;
         $("#supplierAddForm")[0].reset();
+        $("#phoneNumberEntry").empty();
     });
 }
 
