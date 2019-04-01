@@ -12,6 +12,13 @@ function removePhoneNumber(val) {
     $(`#p${val}`).remove();
 }
 
+function onSuccess() {
+    alert("The new supplier was added successfully.")
+    numberPhoneInputs = 0;
+    $("#supplierAddForm")[0].reset();
+    $("#phoneNumberEntry").empty();
+}
+
 function onSubmit() {
     let command = `Insert Into suppliers(`
     if (!locked) command += "supplierId,";
@@ -34,8 +41,7 @@ function onSubmit() {
                 submitPhoneNumbers(id);
             });
         } else {
-            $("#supplierAddForm")[0].reset();
-            $("#phoneNumberEntry").empty();
+            onSuccess();
         }
     });
 }
@@ -53,9 +59,7 @@ function submitPhoneNumbers(id) {
             alert("Database rejected the new supplier's phone numbers.");
             return;
         }
-        numberPhoneInputs = 0;
-        $("#supplierAddForm")[0].reset();
-        $("#phoneNumberEntry").empty();
+        onSuccess();
     });
 }
 

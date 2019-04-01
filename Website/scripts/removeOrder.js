@@ -20,12 +20,13 @@ function _daysBetween(date1, date2) {
   return Math.round(difference_ms/one_day);
 }
 
-function checkDate() {
-    return _daysBetween(new Date($("#dateFiled").val()), new Date()) <= 3;
+function dateExpired() {
+    log(`It has been ${_daysBetween(new Date($("#dateFiled").val()), new Date())} days.`);
+    return _daysBetween(new Date($("#dateFiled").val()), new Date()) > 3;
 }
 
 function onSubmit() {
-    if (checkDate()) {
+    if (dateExpired()) {
         alert("Mueheh, you can't cancel an order more than three days after it was placed!");
         return;
     }

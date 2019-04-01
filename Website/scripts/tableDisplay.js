@@ -17,7 +17,7 @@ function perPageChange() {
 function updateTable() {
   let newTable = getSelectedTable();
   let el = $("#table-label").eq(0);
-  console.log(newTable, el);
+  log(newTable, el);
   el.text("Viewing: " + titleCase(newTable));
   perPageChange();
 }

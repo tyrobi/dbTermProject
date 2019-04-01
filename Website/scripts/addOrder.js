@@ -13,6 +13,11 @@ function removePart(val) {
     $(`#p${val}`).remove();
 }
 
+function onSuccess(id) {
+    alert(`Order #${id} has just been placed!`);
+    $("#supplierAddForm")[0].reset();
+}
+
 function onSubmit() {
     let command = `Insert Into orders(supplierId, dateFiled) Values ('`;
     let date = new Date().toJSON().slice(0,10).replace(/-/g,'-');
@@ -23,16 +28,16 @@ function onSubmit() {
             alert("Database rejected the order.");
             return;
         }
-        else if (numberOfParts > 0) {
+        else
+        {
             sendRequest(`Select orderId from orders order by orderId desc limit 1;`, (resp) => {
                 let r = getTable(resp);
                 let id = r.data[0].orderId;
-                log(r)
-                log(id)
-                submitPartLists(id);
+                if (numberOfParts > 0)
+                    submitPartLists(id);
+                else
+                    onSuccess(id);
             });
-        } else {
-            $("#supplierAddForm")[0].reset();
         }
     });
 }
@@ -54,7 +59,7 @@ function submitPartLists(id) {
             return;
         }
         numberOfParts = 0;
-        $("#supplierAddForm")[0].reset();
+        onSuccess(id);
     });
 }
 
