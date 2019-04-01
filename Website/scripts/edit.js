@@ -125,15 +125,17 @@ function submitQuery() {
 }
 
 function _insert() {
-  let command = `Insert Into ${getSelectedTable()} (`;
   let values = "";
+  let keys = "";
   for (var i = 0; i < currentTableFields.length; i++) {
-    let comma = ((i < currentTableFields.length - 1)?", ":" ")
-    command += (currentTableFields[i] + comma);
-    values += `"${$(`#val-${currentTableFields[i]}1`).val()}"`;
-    values += comma;
+    let v = $(`#val-${currentTableFields[i]}1`).val();
+    if (v === "") continue;
+    values += `"${v}",`;
+    keys += (currentTableFields[i] + ",");
   }
-  command += (`) Values (${values});`);
+  values = values.substring(0, values.length - 1);
+  keys = keys.substring(0, keys.length - 1);
+  let command = `Insert Into ${getSelectedTable()} (${keys}) Values (${values});`;
   log(command); //TODO: present text?
   sendRequest(command, (resp) => {
     if (resp.response == "false") // error ocurred, don't remove data
