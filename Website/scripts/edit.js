@@ -8,10 +8,11 @@ function getAction() {
 function genTable() {
   sendRequest(`Describe ${getSelectedTable()};`, (t)=>{
     let table = "";
+    let a = true;
     switch(getAction()) {
-      case "delete": table = genInsertTable(t); break;
-      case "modify": table = genModifyTable(t); break;
-      case "insert": table = genInsertTable(t); break;
+      case "delete": table = genInsertTable(t); a = false; break;
+      case "modify": table = genModifyTable(t); a = false; break;
+      case "insert": table = genInsertTable(t); a = true; break;
     }
     container.empty();
     container.append(table);
@@ -54,9 +55,11 @@ function genModifyTable(tableDesc) {
   return table;
 }
 
+// NOTE: only insert functionality was implemented.
 function createFormButtons() {
+  let shouldWork = getAction() === "insert";
   return `
-  <input type="submit" class="btn btn-success" value="Submit">
+  <input type="submit" class="btn btn-success" value="Submit" ${shouldWork? "":"disabled"}>
   <input type="reset" class="btn btn-dark" value="Clear">
   `;
 }
@@ -107,6 +110,7 @@ function getInputField(index, field) {
 }
 
 function modChange() {
+  $("#table-label").text(`Selected: ${titleCase(getSelectedTable())}`);
   genTable();
 }
 

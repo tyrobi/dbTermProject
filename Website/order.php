@@ -16,7 +16,7 @@
         Use this form to request parts from any certified MUC &copy; supplier, referenced by internal ID for convenience. (For me, not you.)
       </div>
     </div>
-    <form class="db-form" id="supplierAddForm">
+    <form class="db-form" id="supplierAddForm" onsubmit="onSubmit(); return false;">
       <fieldset>
         <legend>Supplier</legend>
         <div class="form-group">
@@ -31,7 +31,7 @@
         <input type="button" id="newPart" class="btn btn-dark" value="+" onclick="addPart()">
       </fieldset>
       <div class="form-group">
-        <input type="button" class="btn btn-success" value="Submit Order" onclick="onSubmit();">
+        <input type="submit" class="btn btn-success" value="Submit Order">
         <input type="reset" class="btn btn-dark" value="Clear Table">
       </div>
     </form>

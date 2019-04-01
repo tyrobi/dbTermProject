@@ -8,19 +8,16 @@
 <?php include("common/nav.html") ?>
   <div class="container" style="margin-top:30px">
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-md-6 col-sm-6">
         <div class="btn-group dropdown" data-toggle="buttons">
-        <button id="tableDropdown" type="button" class="btn btn-secondary btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Select Table
+        <button id="table-label" type="button" class="btn btn-secondary btn-dark btn-lg  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Selected: Parts
         </button>
-        <div id="table-select-edit" class="dropdown-menu" data-toggle="buttons" aria-labelledby="tableDropdown">
+        <div id="table-select-edit" class="dropdown-menu" data-toggle="buttons" aria-labelledby="table-label">
         </div>
       </div>
       </div>
-      <div class="col-sm-3">
-        <h2 id="table-label">Table:</h2>
-      </div>
-      <div class="col-sm-5">
+      <div class="col-md-6 col-sm-6">
         <label for="action-type">Action: </label>
         <div id="action-type" class="btn-group btn-group-toggle" data-toggle="buttons">
           <label class="btn btn-secondary btn-dark active">
@@ -34,18 +31,14 @@
           </label>
         </div>
       </div>
-      <div class="col-sm-1" width="2rem"></div>
     </div>
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-md-12" style="margin-top: 2ex;">
         <form id="table-area" onsubmit="return submitQuery()">
         </form>
       </div>
-      <div class="col-sm-1" width="1rem"></div>
+    </div>
   </div>
-  <div class="row">
-  </div>
-</div>
 <script src="scripts/edit.js">
 </script>
 <?php include("common/footer.html") ?>

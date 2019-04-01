@@ -18,7 +18,7 @@ function updateTable() {
   let newTable = getSelectedTable();
   let el = $("#table-label").eq(0);
   console.log(newTable, el);
-  el.text("Table: " + titleCase(newTable));
+  el.text("Viewing: " + titleCase(newTable));
   perPageChange();
 }
 

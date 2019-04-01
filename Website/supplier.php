@@ -16,7 +16,7 @@
         Use this form to enter a new supplier into our database. Once added, the phone numbers will be stored separately inside the table 'phoneNumbers', and can be accessed via the ID number associated with any given supplier.
       </div>
     </div>
-    <form class="db-form" id="supplierAddForm">
+    <form class="db-form" id="supplierAddForm" onsubmit="onSubmit(); return false;">
       <fieldset>
         <legend>Supplier Basic Details</legend>
         <div class="form-group">
@@ -38,7 +38,7 @@
         <input type="button" id="newNumber" class="btn btn-dark" value="+" onclick="addPhoneNumber()">
       </fieldset>
         <div class="form-group">
-          <input type="button" class="btn btn-success" value="Submit Changes" onclick="onSubmit();">
+          <input type="submit" class="btn btn-success" value="Submit Changes">
           <input type="reset" class="btn btn-dark" value="Clear Table">
           <label for="idManualMode" style="margin-left: 3ex;">Choose the ID for this entry manually</label>
           <input id="idManualMode"type="checkbox" class="btn btn-dark" value="Manual ID" onclick="checkIdUnlock(this)">

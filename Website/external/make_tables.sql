@@ -88,6 +88,8 @@ create table if not exists boughtPart
   partPurchaseId int not null auto_increment,
   orderId int not null,
   partId int not null,
+  qty int default 1,
+  price double(10,2) not null,
   foreign key(orderId) references tj_robinson.orders(orderId) on update cascade on delete cascade,
   foreign key(partId) references tj_robinson.parts(partId) on update cascade on delete cascade,
   primary key (partPurchaseId)
