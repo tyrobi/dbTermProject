@@ -62,9 +62,3 @@ function submitPartLists(id) {
         onSuccess(id);
     });
 }
-
-function checkIdUnlock(box) {
-    locked = !box.checked;
-    $("#supplierID").attr("disabled", locked);
-    if (locked) $("#supplierID").val("");
-}

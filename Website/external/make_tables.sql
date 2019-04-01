@@ -39,14 +39,6 @@ create table if not exists suppliers
   primary key (supplierId)
 ) engine = innodb;
 
-create table if not exists repairs
-(
-  repairNum int not null,
-  cost double(10,2),
-  filed date,
-  primary key (repairNum)
-) engine = innodb;
-
 create table if not exists cars
 (
   carId int not null auto_increment,
@@ -119,6 +111,16 @@ create table if not exists transaction
   primary key(transactionNumber)
 ) engine = innodb;
 
+create table if not exists repairs
+(
+  repairNum int not null,
+  cost double(10,2),
+  filed date,
+  transactionNumber int not null,
+  foreign key (transactionNumber) references tj_robinson.transaction(transactionNumber),
+  primary key (repairNum)
+) engine = innodb;
+
 create table if not exists forSale
 (
   saleNumber int not null,
@@ -177,7 +179,7 @@ create table if not exists asEmployee
 (
   asId int auto_increment not null,
   sin int not null,
-  foreign key(sin) references tj_robinson.customer(customerNum) on update cascade on delete cascade,
+  foreign key(sin) references tj_robinson.employee(sin) on update cascade on delete cascade,
   primary key(asId)
 ) engine = innodb;
 

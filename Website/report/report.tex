@@ -4,18 +4,20 @@
 
 \author{Evan Farrell, Jordan Dempsey \& Tyler Robinson}
 
-\usepackage[textwidth=\textwidth,textheight=\textheight]{geometry}
+\usepackage[textwidth=\textwidth,textheight=\textheight,margin=1in]{geometry}
 \usepackage{listingsutf8}
 \usepackage{graphicx   }
 \usepackage{titlesec  }
 \usepackage{amssymb }
 \usepackage{amsmath}
+\usepackage{float}
 % \usepackage{pifont}
 \usepackage{color}
 \usepackage{subcaption}
 \usepackage{url}
 \usepackage{ulem}
 \usepackage{accsupp}
+\usepackage{chngcntr}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{
     colorlinks=true, %set true if you want colored links
@@ -73,13 +75,31 @@ basicstyle=\tiny
 }}
 {}
 
-\graphicspath{ {.} }
+\counterwithin{figure}{section}
+\graphicspath{ {figures/} }
 
 \begin{document}
 
 \maketitle
 \clearpage
+\section{Database Diagrams}
+\begin{figure}[H]
+  \center
+  \includegraphics[width=.9\linewidth]{eer.png}
+  \caption{MUC EER Diagram.}
+  \label{fig:eer}
+\end{figure}
+\bigskip
 
+\begin{figure}[H]
+  \center
+  \includegraphics[width=.9\linewidth]{rds.png}
+  \caption{MUC Relational Database Schema.}
+  \label{fig:rds}
+\end{figure}
+
+\clearpage
+\section{Description}
 To keep track of it's many (happy) customers, MUC employs a large number of technologies into it's \href{http://csci3461.cs.smu.ca/~tj_robinson/}{website}. The web-app is written predominately in Javascript code (ECMAscript 2015) with additional PHP and CSS variants to aid in visuals and clarity. \\
 
 The client-side is responsible for generating queries to the MySQL database serverside. While this is potentially the least secure way possible to perform this task, it was also the fastest for prototyping and researching. \\

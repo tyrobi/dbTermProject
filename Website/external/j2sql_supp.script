@@ -14,6 +14,7 @@ mongoexport -d "$db" -c suppliers -u "$user" -p "$pass" --type=csv --fields "_id
 mongoexport -d "$db" -c phoneNumbers -u "$user" -p "$pass" --type=csv --fields "supplierId,phoneNumber" | tail -n +2 > phoneNumbers.csv
 #
 echo "source make_tables.sql;" | mysql -u "$user" --password="$pass" "$db"
+#
 mysqlimport --fields-terminated-by=, --user="$user" --password="$pass" --local "$db" parts.csv
 mysqlimport --fields-terminated-by=, --user="$user" --password="$pass" --local "$db" suppliers.csv
 mysqlimport --fields-terminated-by=, --user="$user" --password="$pass" --local "$db" phoneNumbers.csv

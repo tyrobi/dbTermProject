@@ -1,3 +1,5 @@
+// NOTE: Insert is the only implemented function
+
 let currentTableFields = [];
 const container = $("#table-area").eq(0);
 
@@ -10,8 +12,8 @@ function genTable() {
     let table = "";
     let a = true;
     switch(getAction()) {
-      case "delete": table = genInsertTable(t); a = false; break;
-      case "modify": table = genModifyTable(t); a = false; break;
+      case "delete": table = genInsertTable(t); a = false; break; // Note: unimplemented
+      case "modify": table = genModifyTable(t); a = false; break; // Note: unimplemented
       case "insert": table = genInsertTable(t); a = true; break;
     }
     container.empty();
@@ -114,6 +116,7 @@ function modChange() {
   genTable();
 }
 
+// Only insert was implemented
 function submitQuery() {
   switch(getAction()) {
     case "insert": return _insert();

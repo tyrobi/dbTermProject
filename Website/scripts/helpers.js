@@ -1,6 +1,6 @@
 // Helper functions
 
-const _DEBUG = true;
+const _DEBUG = false;
 let selectedTable = "parts";
 let tableChangeCallback = ()=>{log("Table changed!")};
 

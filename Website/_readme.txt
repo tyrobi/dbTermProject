@@ -1,0 +1,2 @@
+Files j2sql_supp.script and make_tables.sql are located in the /external folder. 
+make_tables is called directly from j2sql, and running the script will totally remove and recreate all tables, as well as autopopulate them from the included JSON files (phone numbers included).

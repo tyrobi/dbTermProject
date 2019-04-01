@@ -14,6 +14,7 @@ function perPageChange() {
   updateTablePeripherals(0);
 }
 
+// Update the table label and redraw the database view
 function updateTable() {
   let newTable = getSelectedTable();
   let el = $("#table-label").eq(0);
@@ -22,6 +23,7 @@ function updateTable() {
   perPageChange();
 }
 
+// Draw the HTML table for the selected DB table
 function redrawTable() {
   let table = $("#database-view").eq(0);
   let displayCount = getNumView();
@@ -29,7 +31,7 @@ function redrawTable() {
   sendRequest(`Select * From ${tableName}
               Limit ${getPageNumber() * displayCount}, ${displayCount};`,
               (newData)=>{
-    let d = getTable(newData);
+    let d = getTable(newData); // Parse the JSON response
     table.empty();
     let tableData = "";
     tableData += "<thead><tr>";
@@ -48,14 +50,14 @@ function redrawTable() {
   });
 }
 
-// TODO: modify page number generation
+// Update page numbers and such
 function updateTablePeripherals(newPage = -1) {
   sendRequest(`Select COUNT(*) as num From ${getSelectedTable()};`, (count)=> {
     let numItems = getTable(count).data[0].num;
     let numPages = numItems / getNumView();
     let pages = $("#page-select").eq(0);
-    let s = (newPage >= 0)? newPage : getPageNumber();
-    let r = 5;
+    let s = (newPage >= 0)? newPage : getPageNumber(); // Selected page
+    let r = 5; // 'radius' around selected page
     let min = (s < r/2)? 0 : Math.ceil(s - r/2);
     let max = (s < numPages - r/2)? Math.ceil(min+r): numPages;
     let str = "";
