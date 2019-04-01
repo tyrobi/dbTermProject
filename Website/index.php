@@ -11,10 +11,10 @@
   <div class="row">
     <div class="col-sm-6 col-md-3">
       <div class="btn-group dropdown" data-toggle="buttons">
-        <button id="tableDropdown" type="button" class="btn btn-secondary btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Select Table
+        <button id="table-label" type="button" class="btn btn-secondary btn-dark btn-lg  dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Viewing: Parts
         </button>
-        <div id="table-select" class="dropdown-menu" data-toggle="buttons" aria-labelledby="tableDropdown">
+        <div id="table-select" class="dropdown-menu" data-toggle="buttons" aria-labelledby="table-label">
         </div>
       </div>
     </div>
@@ -40,8 +40,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <h2 id="table-label">Table:</h2>
-      <table id="database-view" class="table table-hover table-dark">
+      <table id="database-view" class="table table-hover table-dark" style="margin-top: 2ex">
       </table>
     </div>
   </div>

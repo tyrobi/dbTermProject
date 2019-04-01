@@ -80,3 +80,27 @@ function updateTablePeripherals(newPage = -1) {
 $(document).ready(()=>{
   displayAllTables($("#table-select"), updateTable);
 });
+
+let visible = false;
+let fading = false;
+$(window).scroll(function() {
+  if (fading) return;
+  if ($(this).scrollTop() >= 150 && !visible) {
+    fading = true;      // If page is scrolled more than 50px
+    $('#return-to-top').velocity("fadeIn", {duration: 500, complete: ()=>{
+      fading = false;
+      visible = true;
+    }});
+  } else if ($(this).scrollTop() < 150 && visible){
+    fading = true;
+    $('#return-to-top').velocity("fadeOut", {duration: 500, complete: ()=>{
+      fading = false;
+      visible = false;
+    }});
+  }
+});
+$('#return-to-top').click(function() {
+  $('body,html').animate({
+    scrollTop : 0
+  }, 500);
+});

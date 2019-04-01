@@ -51,4 +51,3 @@
 <?php include("common/footer.html") ?>
 </body>
 </html>
-<!-- chapt 10 question 3 (don't show dead weight) -->
